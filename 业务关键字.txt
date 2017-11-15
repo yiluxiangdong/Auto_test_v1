@@ -208,6 +208,70 @@ Library           DatabaseLibrary
     Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
     log    营业执照入网完成
 
+小微进件
+    [Arguments]    ${Type}    ${netType}    ${paymentType}    # 入网方式结算方式
+    log    小微商户入网开始
+    Wait Until Page Contains Element    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    40    error
+    select From List By Label    xpath=//*[@id="mCSB_1_container"]/table/tbody/tr[1]/td[4]/select    已接单
+    Click Element    css=#orderManageSearchButton
+    Wait Until Page Contains Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Click Element    xpath=//*[@id="orderManageTable"]/tr[1]/td[1]/div/input
+    Click Element    ${Type}    #选择CRM
+    Wait Until Page Contains Element    ${netType}
+    Click Element    ${netType}    #选择租赁合同
+    Click Element    ${paymentType}    #选择T+1
+    Click Element    xpath=//*[@id="orderDetailForm"]/div[2]/ul/li[1]/div/div/button
+    sleep    3
+    Wait Until Page Contains Element    name=shopname
+    Click Element    name=shopname
+    Clear Element Text    name=shopname
+    ${n}    Evaluate    random.randint(1000,99999)    random
+    Input Text    name=shopname    美宜佳第${n}分店    #输入店铺名称
+    sleep    2
+    Clear Element Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/table/tbody/tr[2]/td[2]/input
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/table/tbody/tr[2]/td[2]/input    柯增刚
+    Input Text    name=shopname    美宜佳第${n}分店
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/table/tbody/tr[3]/td[2]/input    342501198509230010
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/table/tbody/tr[4]/td[2]/input    20110101
+    Input Text    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/table/tbody/tr[5]/td[2]/input    20210101
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/div/ul/li[1]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/dl/dd[3]/div/ul/li[2]/a
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[2]/div[1]/div/span[2]
+    sleep    1
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[1]/td[2]/span[2]
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[2]/td[2]/input    柯增刚
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[3]/td[2]/input    6236681760000119809
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[2]/input    中国建设银行
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[7]/td[2]/input    中国建设银行股份有限公司宣城市开发区支行
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[6]/td[3]/button    #点击搜索
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[1]/ul/li/div
+    Input Text    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/table/tbody/tr[8]/td[2]/input    18669362325
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[1]/ul/li[2]/a
+    sleep    1
+    Evaluate    os.system('D:/pythonProject/mudelspider/rrd_operator_test/upload_robot.exe')    os
+    sleep    1
+    Click Element    xpath=//*[@id="panelTabPage"]/section[3]/div[1]/div[2]/span[2]    #进入下一页
+    Wait Until Page Contains Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[2]/td[2]/input    美宜佳第${n}分店
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[3]/td[2]/select    民生类
+    sleep    3
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div
+    Click Element    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[4]/td[2]/div/div/ul/li[7]
+    sleep    1
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[1]    黑龙江省
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[2]    牡丹江市
+    select From List By Label    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[5]/td[2]/select[3]    西安区
+    Input Text    xpath=//*[@id="panelTabPage"]/section[4]/div[1]/dl/dd[1]/table/tbody/tr[6]/td[2]/input    解放路${n}号
+    Click Element    //*[@id="panelTabPage"]/section[4]/div[1]/div/span[2]
+    log    小微商户入网完成
+
 关闭浏览器
     log    关闭浏览器
     Close All Browsers
